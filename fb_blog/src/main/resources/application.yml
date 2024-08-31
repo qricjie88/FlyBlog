@@ -1,0 +1,36 @@
+server:
+  port: 8181
+# DataSource Config
+spring:
+  thymeleaf:
+      cache: false
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/fly_blog
+    username: root
+    password: admin
+  redis:
+      sentinel:
+        master: mymaster
+        nodes: 47.106.38.101:26379,47.106.38.101:26380
+  application:
+    name: fb-blog
+  rabbitmq:
+    host: localhost
+    port: 5672
+    password: guest
+    username: guest
+  main:
+    allow-bean-definition-overriding: true
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+#    打印sql
+    com.fly.dao: DEBUG
+eureka:
+  client:
+    service-url:
+       defaultZone: http://admin:admin@localhost:8761/eureka/
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
